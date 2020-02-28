@@ -1,0 +1,20 @@
+{
+  "name": "yunyun",
+  "version": "1.0.0",
+  "description": "Yunyun goes looking for friends",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.1.100:8888/ashish/yunyun.git"
+  },
+  "author": "Ashish Kansara",
+  "license": "MIT"
+}
