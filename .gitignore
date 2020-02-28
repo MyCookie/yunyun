@@ -215,3 +215,6 @@ dmypy.json
 
 # ignore python venv
 ./env/
+
+# ignore bot token
+env.js
