@@ -42,10 +42,7 @@ client.on("message", msg => {
             .then(`Removed role ${island.name} for ${user.tag}`)
             .catch(console.error);
           msg.channel
-            .send(
-              member.nickname,
-              "welcome back, your friends must've really missed you!"
-            )
+            .send(`Welcome back, ${member.nickname}, Yunyun missed you!`)
             .then(
               console.log(
                 `Yunyun brought back a friend to the island, ${msg.author.tag}!`
@@ -69,7 +66,8 @@ client.on("message", msg => {
           if (mod)
             member
               .removeRole(mod)
-              .then(`Removed role ${mod.name} for ${user.tag}`);
+              .then(`Removed role ${mod.name} for ${user.tag}`)
+              .catch(console.error);
 
           const island = member.guild.roles.find(
             role => role.name === "Voted off the Island"
@@ -80,7 +78,7 @@ client.on("message", msg => {
             .catch(console.error);
 
           msg.channel
-            .send(member.nickname, "why is everyone being so mean to you!")
+            .send(`Why is everyone being so mean to ${member.nickname}!`)
             .then(`Yunyun said bye to a friend ${user.tag} :(`)
             .catch(console.error);
         }
@@ -93,10 +91,10 @@ client.on("message", msg => {
         if (member) {
           const modRole = member.guild.roles.find(role => role.name === "Mod");
           member
-            .removeRole(modRole)
+            .addRole(modRole)
             .then(`Added role ${modRole.name} to ${user.tag}`);
           msg.channel
-            .send(member.nickname, "your friends really trust you!")
+            .send(`Your friends really trust you, ${member.nickname}!`)
             .then(`Yunyun helped ${user.tag} help their friends!`)
             .catch(console.error);
         }
@@ -106,7 +104,7 @@ client.on("message", msg => {
       msg.mentions.users.forEach((value, key) => {
         msg.channel
           .send(
-            `Yunyun knows everything about her friends! Your name is ${value.tag}, your ID is ${value.id} and your birthday is ${value.createdAt}!`
+            `Yunyun knows everything about her friends! Your real name is ${value.tag}, your ID is ${value.id} and your birthday is ${value.createdAt}!`
           )
           .then(
             console.log(
