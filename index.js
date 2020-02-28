@@ -7,7 +7,7 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   client.user
-    .setActivity("to her friends", { type: "LISTENING" })
+    .setActivity("to her friends!", { type: "LISTENING" })
     .then(presence =>
       console.log(`Yunyun's ${presence.game ? presence.game.name : `none`}`)
     )
@@ -41,8 +41,11 @@ client.on("message", msg => {
             .removeRole(island)
             .then(`Removed role ${island.name} for ${user.tag}`)
             .catch(console.error);
-          msg
-            .reply("welcome back, your friends must've really missed you!")
+          msg.channel
+            .send(
+              member.nickname,
+              "welcome back, your friends must've really missed you!"
+            )
             .then(
               console.log(
                 `Yunyun brought back a friend to the island, ${msg.author.tag}!`
@@ -76,8 +79,8 @@ client.on("message", msg => {
             .then(`Added role ${island.name} to ${user.tag}`)
             .catch(console.error);
 
-          msg
-            .reply("why is everyone being so mean to you!")
+          msg.channel
+            .send(member.nickname, "why is everyone being so mean to you!")
             .then(`Yunyun said bye to a friend ${user.tag} :(`)
             .catch(console.error);
         }
@@ -92,8 +95,8 @@ client.on("message", msg => {
           member
             .removeRole(modRole)
             .then(`Added role ${modRole.name} to ${user.tag}`);
-          msg
-            .reply("your friends really trust you!")
+          msg.channel
+            .send(member.nickname, "your friends really trust you!")
             .then(`Yunyun helped ${user.tag} help their friends!`)
             .catch(console.error);
         }
@@ -101,12 +104,16 @@ client.on("message", msg => {
     } else if (msg.content.includes("inspect") && msg.mentions.users) {
       // console.log(msg.mentions.users);
       msg.mentions.users.forEach((value, key) => {
-        console.log("Snowflake: ", key);
-        console.log("user: ", value);
-        console.log(
-          "roles: ",
-          msg.guild.member(msg.mentions.users.first()).roles
-        );
+        msg.channel
+          .send(
+            `Yunyun knows everything about her friends! Your name is ${value.tag}, your ID is ${value.id} and your birthday is ${value.createdAt}!`
+          )
+          .then(
+            console.log(
+              `Yunyun shared everything she knew about ${value.tag} with her friends!`
+            )
+          )
+          .catch(console.error);
       });
     } else {
       if (msg.member.id != client.user.id)
