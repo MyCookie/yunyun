@@ -17,7 +17,7 @@ client.on("ready", () => {
 // yunyun helps her friends!
 client.on("message", msg => {
   if (
-    (msg.author.id != client.id) &&
+    (msg.author.id !== client.user.id) &&
     msg.content.toLowerCase().startsWith("yunyun")
   ) {
     if (msg.content.includes("ping")) {
