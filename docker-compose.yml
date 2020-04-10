@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    yunyun:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        container_name: yunyun
+        hostname: yunyun
+        restart: unless-stopped
+
+networks:
+    default:
+        external:
+            name: service_network
