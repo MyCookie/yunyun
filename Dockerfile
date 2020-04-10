@@ -1,6 +1,6 @@
-FROM node:10
+FROM node:lts
 
-WORKDIR /usr/src/yunyun
+WORKDIR /opt/yunyun
 
 COPY package*.json ./
 RUN npm install
@@ -8,4 +8,3 @@ RUN npm install
 COPY . .
 
 CMD [ "node", "index.js" ]
-
